@@ -1,0 +1,34 @@
+Task Notes:
+Start - cmd
+mongo
+use films
+db.films.insert(json raw data)
+//to check if inserted
+db.films.find().pretty()
+-----------------------------
+Task questions: https://github.com/Rajavasanthan/jsondata/blob/master/mongoData/films.txt
+film.txt
+----------
+1. db.films.find().pretty()
+2. db.films.find({},{"title":1,_id:0}).pretty()
+3. db.films.find({},{"director":1,_id:0}).pretty()
+4. db.films.find({},{"title":1,"director":1,_id:0}).pretty()
+5. db.films.find({},{"title":1,"year":1,_id:0}).pretty()
+7. db.films.find({"id":6},{"title":1,_id:0}).pretty()    OR  db.films.find({"id":6},{_id:0}).pretty()
+8. db.films.find( { $and: [ { year: { $gt: 2000 } }, { year: { $lt: 2010 } } ] },{_id:0} )
+9. db.films.find( { $or: [ { year: { $lt: 2000 } }, { year: { $gt: 2010 } } ] },{_id:0} )
+10. db.films.find({},{title:1,year:1,_id:0}).limit(5)
+12.  db.films.createIndex( { title: "text" } ) 
+        db.films.find({ $text: { $search: "Toy" } },{_id:0} )
+13. db.films.find( { $or: [ { "director":"John Lasseter"}]},{_id:0})
+14. db.films.find( { $nor: [ { "director":"John Lasseter"}]},{_id:0})
+15. db.films.find({ title: { $regex: 'wall', $options: 'title'} })
+17. db.films.find({},{_id:0}).sort({year:1}).skip(db.films.count()-4)
+18. db.films.find({},{_id:0}).sort({title:1}).limit(5)
+19. db.films.find({},{_id:0}).sort({title:1}).limit(5).skip(5)
+----------------------------------------------------------------------------
+student.txt
+---------------
+1. db.students.find( { $and: [ { age: { $gt: 21 } }, { age: { $lt: 30 } } ] },{_id:0} )
+2. db.students.find( { $and: [ { age: { $gt: 21 } }, { age: { $lt: 30 } } , { height: { $gt: 5 } } ] },{_id:0} )
+
